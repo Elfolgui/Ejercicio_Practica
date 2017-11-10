@@ -6,13 +6,36 @@ class Controlador(object):
     @classmethod
     def Menu(cls):
         os.system("cls")
+        print("1: Agregar Lugar")
+        print("2: Modificar Lugar")
+        print("3: Mostrar Mundo")
+        print("0: Salir" + "\n")
+
+        selector = input()
+
+        return selector
+
+    @classmethod
+    def Menu_Agregar(cls):
+        os.system("cls")
         print("1: Agregar Barrio")
         print("2: Agregar Ciudad")
         print("3: Agregar Provincias")
         print("4: Agregar Pais")
-        print("5: Agregar Continente")
-        print("6: Mostrar Mundo")
-        print("0: Salir" + "\n")
+        print("5: Agregar Continente" + "\n")
+
+        selector = input()
+
+        return selector
+
+    @classmethod
+    def Menu_Modificar(cls):
+        os.system("cls")
+        print("1: Modificar Barrio")
+        print("2: Modificar Ciudad")
+        print("3: Modificar Provincias")
+        print("4: Modificar Pais")
+        print("5: Modificar Continente" + "\n")
 
         selector = input()
 
@@ -218,6 +241,178 @@ class Controlador(object):
             if continente.Codigo == conti.Codigo:
                 return False
         return conti
+
+    @classmethod
+    def Modificar_Barrio(cls, mundo):
+        print("Ingre el Codigo del Barrio a modificar")
+        Codigo_Barrio = input()
+        for con in mundo.Lista_Continentes:
+            for pa in con.Lista_Paises:
+                for pro in pa.Lista_Provincias:
+                    for ciu in pro.Lista_Ciudades:
+                        for bar in ciu.Lista_Barrios:
+                            if bar.Codigo == int(Codigo_Barrio):
+                                print("Barrio encontrado" + "\n" + "Indique lo que desee modificar")
+                                respuesta = input()
+                                if respuesta == "nombre":
+                                    print("Ingrese el nuevo Nombre")
+                                    Nombre = input()
+                                    bar.Nombre = Nombre
+                                elif respuesta == "poblacion":
+                                    print("Ingrese el nuevo numero de poblacion")
+                                    poblacion = input()
+                                    bar.Poblacion = poblacion
+                                elif respuesta == "coordenadas":
+                                    print("Primer Punto")
+                                    cor1 = input()
+                                    cor1_1 = input()
+                                    print("Segundo Punto")
+                                    cor2 = input()
+                                    cor2_2 = input()
+                                    bar.Coordendas = ((cor1, cor1_1), (cor2, cor2_2))
+                                elif respuesta == "borrar":
+                                    ciu.Lista_Barrios.remove(bar)
+                                print("Dato cambiado" + "\n" + "Aprete Enter para continuar")
+                                input()
+                                return
+
+    @classmethod
+    def Modificar_Ciudad(cls, mundo):
+        print("Ingre el Codigo de la Ciudad a modificar")
+        Codigo_Ciudad = input()
+        for con in mundo.Lista_Continentes:
+            for pa in con.Lista_Paises:
+                for pro in pa.Lista_Provincias:
+                    for ciu in pro.Lista_Ciudades:
+                        if ciu.Codigo == int(Codigo_Ciudad):
+                            print("Ciudad encontrada" + "\n" + "Ingrese el nombre del atributo a modificar")
+                            respuesta = input()
+                            if respuesta == "nombre":
+                                print("Ingrese el nuevo Nombre")
+                                Nombre = input()
+                                ciu.Nombre = Nombre
+                            elif respuesta == "coordenadas":
+                                print("Primer Punto")
+                                cor1 = input()
+                                cor1_1 = input()
+                                print("Segundo Punto")
+                                cor2 = input()
+                                cor2_2 = input()
+                                ciu.Coordendas = ((cor1, cor1_1), (cor2, cor2_2))
+                            elif respuesta == "borrar":
+                                for barrio in ciu.Lista_Barrios:
+                                    ciu.Lista_Barrios.remove(barrio)
+                                pro.Lista_Ciudades.remove(ciu)
+                            print("Dato cambiado" + "\n" + "Aprete Enter para continuar")
+                            input()
+                            return
+
+    @classmethod
+    def Modificar_Provincia(cls, mundo):
+        os.system("cls")
+        print("Ingre el Codigo de la Provincia a modificar")
+        Codigo_Provincia = input()
+        for con in mundo.Lista_Continentes:
+            for pa in con.Lista_Paises:
+                for pro in pa.Lista_Provincias:
+                    if pro.Codigo == int(Codigo_Provincia):
+                        os.system("cls")
+                        print("Provincia encontrada" + "\n" + "Ingrese el nombre del atributo a modificar")
+                        respuesta = input()
+                        if respuesta == "nombre":
+                            print("Ingrese el nuevo Nombre")
+                            Nombre = input()
+                            pro.Nombre = Nombre
+                        elif respuesta == "coordenadas":
+                            print("Primer Punto")
+                            cor1 = input()
+                            cor1_1 = input()
+                            print("Segundo Punto")
+                            cor2 = input()
+                            cor2_2 = input()
+                            pro.Coordendas = ((cor1, cor1_1), (cor2, cor2_2))
+                        elif respuesta == "borrar":
+                            for ciudad in pro.Lista_Ciudades:
+                                for barrio in ciudad.Lista_Barrios:
+                                    ciudad.Lista_Barrios.remove(barrio)
+                                pro.Lista_Ciudades.remove(ciudad)
+                            pa.Lista_Provincias.remove(pro)
+                        os.system("cls")
+                        print("Dato cambiado o eliminado" + "\n" + "Aprete Enter para continuar")
+                        input()
+
+    @classmethod
+    def Modificar_Pais(cls, mundo):
+        os.system("cls")
+        print("Ingre el Codigo del Pais a modificar")
+        Codigo_Pais = input()
+        for con in mundo.Lista_Continentes:
+            for pa in con.Lista_Paises:
+                if pa.Codigo == int(Codigo_Pais):
+                    os.system("cls")
+                    print("Pais encontrado" + "\n" + "Ingrese el nombre del atributo a modificar")
+                    respuesta = input()
+                    if respuesta == "nombre":
+                        print("Ingrese el nuevo Nombre")
+                        Nombre = input()
+                        pa.Nombre = Nombre
+                    elif respuesta == "coordenadas":
+                        print("Primer Punto")
+                        cor1 = input()
+                        cor1_1 = input()
+                        print("Segundo Punto")
+                        cor2 = input()
+                        cor2_2 = input()
+                        pa.Coordendas = ((cor1, cor1_1), (cor2, cor2_2))
+                    elif respuesta == "borrar":
+                        for provincia in pa.Lista_Provincias:
+                            for ciudad in provincia.Lista_Ciudades:
+                                for barrio in ciudad.Lista_Barrios:
+                                    ciudad.Lista_Barrios.remove(barrio)
+                                provincia.Lista_Ciudades.remove(ciudad)
+                            pa.Lista_Provincias.remove(provincia)
+                        con.Lista_Paises.remove(pa)
+                    os.system("cls")
+                    print("Dato cambiado" + "\n" + "Aprete Enter para continuar")
+                    input()
+                    return
+
+    @classmethod
+    def Modificar_Continente(cls, mundo):
+        os.system("cls")
+        print("Ingre el Codigo del Continente a modificar")
+        Codigo_Continente = input()
+        for con in mundo.Lista_Continentes:
+            if con.Codigo == int(Codigo_Continente):
+                os.system("cls")
+                print("Continente encontrado" + "\n" + "Ingrese el nombre del atributo a modificar")
+                respuesta = input()
+                if respuesta == "nombre":
+                    print("Ingrese el nuevo Nombre")
+                    Nombre = input()
+                    con.Nombre = Nombre
+                elif respuesta == "coordenadas":
+                    print("Primer Punto")
+                    cor1 = input()
+                    cor1_1 = input()
+                    print("Segundo Punto")
+                    cor2 = input()
+                    cor2_2 = input()
+                    con.Coordendas = ((cor1, cor1_1), (cor2, cor2_2))
+                elif respuesta == "borrar":
+                    for pais in con.Lista_Paises:
+                        for provincia in pais.Lista_Provincias:
+                            for ciudad in provincia.Lista_Ciudades:
+                                for barrio in ciudad.Lista_Barrios:
+                                    ciudad.Lista_Barrios.remove(barrio)
+                                provincia.Lista_Ciudades.remove(ciudad)
+                            pais.Lista_Provincias.remove(provincia)
+                        con.Lista_Paises.remove(pais)
+                    mundo.Lista_Continentes.remove(con)
+                os.system("cls")
+                print("Dato cambiado" + "\n" + "Aprete Enter para continuar")
+                input()
+                return
 
     @classmethod
     def Mostrar_Mundo(cls, mundo):
