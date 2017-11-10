@@ -21,33 +21,20 @@ Mundi.Lista_Continentes.append(Con)
 
 
 while True:
-    os.system("cls")
-    print("1: Agregar Barrio")
-    print("2: Agregar Ciudad")
-    print("3: Agregar Provincias")
-    print("4: Agregar Pais")
-    print("5: Agregar Continente")
-    print("6: Mostrar Barrios")
-    print("7: Mostrar Ciudades")
-    print("8: Mostrar Provincias")
-    print("9: Mostrar Paises")
-    print("10: Mostrar Continentes")
-    print("0: Salir")
-
-    selector = input()
+    selector = Controlador.Menu()
 
     if selector == "1":
         if Controlador.Menu_Agregar_Barrio(Ciu, Prov):
             pass
     if selector == "2":
-        Controlador.Agregar_Ciudad()
+        Controlador.Menu_Agregar_Ciudad(Prov, Pa)
     if selector == "3":
-        Controlador.Agregar_Provincia()
+        Controlador.Menu_Agregar_Provincia(Con, Pa)
     if selector == "4":
-        Controlador.Agregar_Pais()
+        Controlador.Menu_Agregar_Pais(Con, Mundi)
     if selector == "5":
-        Controlador.Agregar_Continente()
+        Controlador.Menu_Agregar_Continente(Mundi)
     if selector == "6":
-        Controlador.Mostrar_Barrios(Mundi)
+        Controlador.Mostrar_Mundo(Mundi)
     if selector == "0":
         break
