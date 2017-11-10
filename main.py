@@ -1,5 +1,4 @@
 from Clases import *
-import os
 
 Con = Continente("Con", 747, ((0, 0), (100, 100)))
 
