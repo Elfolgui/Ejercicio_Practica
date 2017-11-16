@@ -59,6 +59,25 @@ while True:
             break
 
     if seleccionador == "3":
+        selec = Controlador.Menu_Poblaciones()
+
+        if selec == "1":
+            sel = Controlador.Poblacion_Pais()
+
+            if sel == "1":
+                print("El Pais con mas poblacion tiene: " + Controlador.Mostrar_Pais_Mayor(Mundi) + " personas")
+            if sel == "2":
+                print("El Pais con menos poblacion tiene: " + Controlador.Mostrar_Pais_Menor(Mundi)+ " personas")
+
+        if selec == "2":
+            sel = Controlador.Poblacion_Continente()
+
+            if sel == "1":
+                print("El Continente con mas poblacion tiene: " + Controlador.Mostrar_Continente_Mayor(Mundi) + " personas")
+            if sel == "2":
+                print("El Continente con menos poblacion tiene: " + Controlador.Mostrar_Continente_Menor(Mundi) + " personas")
+
+    if seleccionador == "4":
         Controlador.Mostrar_Mundo(Mundi)
 
     if seleccionador == "0":

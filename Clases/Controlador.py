@@ -8,7 +8,8 @@ class Controlador(object):
         os.system("cls")
         print("1: Agregar Lugar")
         print("2: Modificar Lugar")
-        print("3: Mostrar Mundo")
+        print("3: Poblaciones")
+        print("4: Mostrar Mundo")
         print("0: Salir" + "\n")
 
         selector = input()
@@ -36,6 +37,36 @@ class Controlador(object):
         print("3: Modificar Provincias")
         print("4: Modificar Pais")
         print("5: Modificar Continente" + "\n")
+
+        selector = input()
+
+        return selector
+
+    @classmethod
+    def Menu_Poblaciones(cls):
+        os.system("cls")
+        print("1: Paises")
+        print("5: Continentes" + "\n")
+
+        selector = input()
+
+        return selector
+
+    @classmethod
+    def Poblacion_Pais(cls):
+        os.system("cls")
+        print("1: Mayor Poblacion")
+        print("5: Menor Poblacion" + "\n")
+
+        selector = input()
+
+        return selector
+
+    @classmethod
+    def Poblacion_Continente(cls):
+        os.system("cls")
+        print("1: Mayor Poblacion")
+        print("5: Menor Poblacion" + "\n")
 
         selector = input()
 
@@ -449,3 +480,31 @@ class Controlador(object):
                         print("  ")
         print("\n" + "Presione enter para volver")
         input()
+
+    @classmethod
+    def Mostrar_Pais_Mayor(cls, mundo):
+        print("Ingrese un Codigo de un continente"+"\n")
+
+        Codigo = input()
+
+        for Con in mundo.Lista_Continentes:
+            if Con.Codigo == Codigo:
+                return Con.mayorPoblacion()
+
+    @classmethod
+    def Mostrar_Pais_Menor(cls, mundo):
+        print("Ingrese un Codigo de un continente" + "\n")
+
+        Codigo = input()
+
+        for Con in mundo.Lista_Continentes:
+            if Con.Codigo == Codigo:
+                return Con.menorPoblacion()
+
+    @classmethod
+    def Mostrar_Continente_Mayor(cls, mundo):
+        return mundo.mayorPoblacion()
+
+    @classmethod
+    def Mostrar_Continente_Menor(cls, mundo):
+        return mundo.menorPoblacion()
